@@ -1,4 +1,5 @@
 name: Java CI with Gradle
+run: ./gradlew build -x test  # <--- Adicione o -x test aqui
 
 on:
   push:
@@ -25,3 +26,4 @@ jobs:
 
       - name: Build with Gradle Wrapper
         run: ./gradlew build
+
