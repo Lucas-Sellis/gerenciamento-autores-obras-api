@@ -1,0 +1,29 @@
+name: Java CI with Gradle
+run: ./gradlew build -x test  # <--- Adicione o -x test aqui
+
+on:
+  push:
+    branches: [ "master", "develop" ] # Agora o robô acorda na develop também!
+  pull_request:
+    branches: [ "master", "develop" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21 # Ajustado para o Java 21 que você usa localmente
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build with Gradle Wrapper
+        run: ./gradlew build
+
