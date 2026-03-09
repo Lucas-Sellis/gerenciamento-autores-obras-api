@@ -22,10 +22,14 @@ public class ObraDTO {
     @Size(max = 240, message = "A descrição deve ter no máximo 240 caracteres")
     private String descricao;
 
+    // As datas estão aqui sem @NotBlank porque, na Service, você vai validar
+    // se o usuário preencheu PELO MENOS uma delas.
     private LocalDate dataPublicacao;
-
     private LocalDate dataExposicao;
 
-    // Aqui passamos apenas os IDs dos autores para vincular à obra
+    // A GRANDE DÚVIDA: Por que uma lista de IDs (Long) e não de Autores?
+    // Pense no Postman: O usuário não vai digitar o nome, e-mail e CPF do autor toda vez.
+    // Ele apenas envia os "RGs" (IDs) dos autores que já existem no banco.
+    // Exemplo no JSON: "autoresIds": [1, 5, 10]
     private List<Long> autoresIds;
 }

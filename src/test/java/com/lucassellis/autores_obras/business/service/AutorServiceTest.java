@@ -15,6 +15,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class AutorServiceTest {
 
+
     @Mock
     private AutorRepository repository;
 
@@ -23,6 +24,9 @@ class AutorServiceTest {
 
     @InjectMocks
     private AutorService service;
+
+
+
 
     @Test
     @DisplayName("Deve lançar erro ao tentar criar autor brasileiro sem CPF")

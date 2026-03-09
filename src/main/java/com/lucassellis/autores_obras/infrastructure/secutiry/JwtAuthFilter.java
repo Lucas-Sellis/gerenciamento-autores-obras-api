@@ -18,6 +18,7 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
 
+    // Essa classe intercepta cada requisição e verifica se tem token e se o mesmo é valido
     private final JwtService jwtService;
 
     @Override

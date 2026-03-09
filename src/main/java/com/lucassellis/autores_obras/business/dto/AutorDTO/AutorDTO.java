@@ -14,8 +14,10 @@ import java.time.LocalDate;
 @Builder
 public class AutorDTO {
 
-    private Long id;
+    private Long id; // O ID aqui serve para o usuário saber quem ele acabou de criar
 
+    // No DTO, o @NotBlank com 'message' é essencial para o Front-end/Postman
+    // saber exatamente o que corrigiu sem precisar adivinhar o erro.
     @NotBlank(message = "Nome é obrigatório")
     private String nome;
 
@@ -26,10 +28,13 @@ public class AutorDTO {
     private String sexo;
 
     @Past(message = "A data de nascimento deve ser no passado")
-    private LocalDate dataNascimento; // Note: sem o 'De' para testarmos o mapeamento
+    private LocalDate dataNascimento;
 
     @NotBlank(message = "País é obrigatório")
     private String pais;
 
-    private String cpf; // Não coloquei @NotBlank aqui porque a regra do Brasil será no Service
+    // SUA ESTRATÉGIA: Perfeita! Não colocou @NotBlank aqui porque, se o autor
+    // for dos EUA, o CPF pode ser nulo. A inteligência de "Se for Brasil, exija CPF"
+    // fica escondida na Service, protegendo a lógica.
+    private String cpf;
 }
