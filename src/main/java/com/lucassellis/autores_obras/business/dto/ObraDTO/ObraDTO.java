@@ -26,6 +26,6 @@ public class ObraDTO {
 
     private LocalDate dataExposicao;
 
-    // Aqui passamos apenas os IDs dos autores para vincular à obra
     private List<Long> autoresIds;
+
 }

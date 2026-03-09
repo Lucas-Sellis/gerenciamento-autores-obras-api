@@ -13,4 +13,5 @@ public interface ObraMapper {
 
     @Mapping(target = "autoresIds", ignore = true)
     ObraDTO toDto(ObraEntity entity);
+
 }

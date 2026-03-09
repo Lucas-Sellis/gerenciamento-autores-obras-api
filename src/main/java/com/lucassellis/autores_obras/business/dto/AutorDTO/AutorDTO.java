@@ -26,10 +26,11 @@ public class AutorDTO {
     private String sexo;
 
     @Past(message = "A data de nascimento deve ser no passado")
-    private LocalDate dataNascimento; // Note: sem o 'De' para testarmos o mapeamento
+    private LocalDate dataNascimento;
 
     @NotBlank(message = "País é obrigatório")
     private String pais;
 
-    private String cpf; // Não coloquei @NotBlank aqui porque a regra do Brasil será no Service
+    private String cpf;
+
 }

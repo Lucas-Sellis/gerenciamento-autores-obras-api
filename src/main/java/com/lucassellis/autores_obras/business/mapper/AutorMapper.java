@@ -13,8 +13,8 @@ public interface AutorMapper {
     @Mapping(target = "obras", ignore = true)
     AutorEntity toEntity(AutorDTO dto);
 
-
     @Mapping(source = "paisOrigem", target = "pais")
     @Mapping(source = "dataDeNascimento", target = "dataNascimento")
     AutorDTO toDto(AutorEntity entity);
+
 }

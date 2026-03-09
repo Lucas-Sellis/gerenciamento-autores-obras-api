@@ -1,14 +1,14 @@
 package com.lucassellis.autores_obras.infrastructure.entities;
 
-import com.lucassellis.autores_obras.business.dto.AutorDTO.AutorDTO;
+import com.lucassellis.autores_obras.infrastructure.entities.ObraEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
 import lombok.*;
+
 import java.time.LocalDate;
 import java.util.Set;
-
 
 @Entity
 @Getter
@@ -20,7 +20,6 @@ import java.util.Set;
 @Table(name = "autor")
 
 public class AutorEntity {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,21 +44,10 @@ public class AutorEntity {
     @Column(name = "pais_origem", length = 100)
     private String paisOrigem;
 
-    @Column(name = "cpf", length = 100)
+    @Column(name = "cpf", length = 14, unique = true)
     private String cpf;
 
     @ManyToMany(mappedBy = "autores")
     private Set<ObraEntity> obras;
 
-    public AutorEntity(AutorDTO dto) {
-    }
 }
-
-
-//1. Autor:
-//        ○ Nome (obrigatório)
-//○ Sexo
-//○ E-mail (validado, único)
-//○ Data de nascimento (validada)
-//○ País de origem (obrigatório)
-//○ CPF (obrigatório para autores do Brasil, único)

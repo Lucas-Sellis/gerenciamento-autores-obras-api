@@ -11,11 +11,12 @@ import java.util.Date;
 @Service
 public class JwtService {
 
-    // Uma chave secreta para assinar o token (em produção, use uma variável de ambiente!)
     private final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-    private final long EXPIRATION_TIME = 86400000; // 24 horas em milissegundos
+
+    private final long EXPIRATION_TIME = 86400000;
 
     public String gerarToken(String username) {
+
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
@@ -25,6 +26,7 @@ public class JwtService {
     }
 
     public String extrairUsername(String token) {
+
         return Jwts.parserBuilder()
                 .setSigningKey(SECRET_KEY)
                 .build()
@@ -32,4 +34,5 @@ public class JwtService {
                 .getBody()
                 .getSubject();
     }
+
 }
